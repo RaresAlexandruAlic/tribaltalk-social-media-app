@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 function App() {
   const mode = useSelector((state) => state.mode);
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const isAuthenticated = Boolean(useSelector((state) => state.token));
   
   return (
     <div className="app">
@@ -19,9 +20,9 @@ function App() {
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Routes>
-            <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
-            <Route path="/profile/:userId" element={<UserProfile />} />
+            <Route path="/" element={isAuthenticated ? <HomePage /> : <Navigate to="/login" />}/>
+            <Route path="/profile/:userId" element={isAuthenticated ? <UserProfile /> : <Navigate to="/login" />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
