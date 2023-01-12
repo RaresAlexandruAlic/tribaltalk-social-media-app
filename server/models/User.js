@@ -32,8 +32,8 @@ const UserSchema = new mongoose.Schema({
         type: Array,
         default: []
     },
-    description: String,
     location: String,
+    description: String,
     occupation: String,
     profileViews: Number,
     profileLikes: Number
