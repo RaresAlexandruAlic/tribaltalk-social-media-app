@@ -10,7 +10,6 @@ router.get("/:id/friends", verifyToken, getUserFriends);
 
 router.patch("/:id", verifyToken, updateUser);
 router.patch("/:id/:friendId", verifyToken, addFriend);
-router.patch("/:id/:fiendId", verifyToken, removeFriend);
 
 router.delete("/:id", verifyToken, removeUser);
 
