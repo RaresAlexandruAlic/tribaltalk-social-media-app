@@ -54,10 +54,8 @@ const Form = () => {
         const formData = new FormData();
         for (let value in values) {
             formData.append(value, values[value]);
-            console.log(value, values[value]);
         }
         formData.append('picturePath', values.picture.name);
-        console.log(formData);
         const savedUserResponse = await fetch(
             "http://localhost:3001/authenticate/register",
             {
@@ -65,7 +63,6 @@ const Form = () => {
                 body: formData,
             } 
         );
-        console.log(savedUserResponse);
         const savedUser = await savedUserResponse.json();
         onSubmitProps.resetForm();
 
